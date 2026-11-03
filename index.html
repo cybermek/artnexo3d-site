@@ -3,237 +3,209 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>ArtNexo 3D</title>
+<title>Bendito Filamento</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%231F3A5F' d='M93.30,25.00%20L58.12,4.69%20L58.12,47.45%20L68.62,57.95%20L68.62,22.88%20L82.80,31.07%20L82.80,68.93%20L50.00,87.87%20L49.28,87.46%20L44.03,96.55%20L50.00,100.00%20L93.30,75.00%20Z%20M6.70,25.00%20L6.70,75.00%20L41.88,95.31%20L41.88,49.31%20L59.66,67.09%20L67.09,59.66%20L31.38,23.95%20L31.38,77.12%20L17.20,68.93%20L17.20,31.07%20L30.70,23.27%20L50.00,12.13%20L50.72,12.54%20L55.97,3.45%20L50.00,0.00%20Z'/%3E%3C/svg%3E">
-<meta name="description" content="ArtNexo 3D: peças impressas em 3D com acabamento caprichado, muitas pintadas à mão. Arte sacra, estatuetas, vasos, decoração de Natal e miniaturas personalizadas, a pronta entrega ou sob encomenda para todo o Brasil.">
+<meta name="description" content="Bendito Filamento: peças impressas em 3D para decorar, presentear e usar. Natal, decoração, fé, presentes com nome e muito mais, a pronta entrega ou sob encomenda para todo o Brasil.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 110'%3E%3Crect x='14' y='24' width='72' height='13' rx='6.5' fill='%231E1B3A'/%3E%3Crect x='14' y='83' width='72' height='13' rx='6.5' fill='%231E1B3A'/%3E%3Crect x='22' y='34' width='56' height='52' rx='6' fill='%23FF5B4A'/%3E%3Cellipse cx='50' cy='12' rx='20' ry='5.5' fill='none' stroke='%23FFC53D' stroke-width='5'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700&family=Onest:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Fredoka:wght@400;500;600;700&display=swap">
 <style>
-/* Layout: hero escuro de largura total, depois grade de 12 colunas com mosaico (bento) de produtos */
+/* Layout: página clara e única (escolha deliberada), faixas coloridas como carretéis de filamento, cards "adesivo" levemente girados */
 :root{
-  --bg:#F5F5F2; --surface:#FFFFFF; --surface-2:#ECEEEF; --ink:#13253D; --muted:#5A6472;
-  --line:#DFE2E4; --navy:#1F3A5F; --gold:#C8A15A; --gold-2:#DDBE82;
-  --dark:#0F1F35; --dark-2:#16293F; --dark-ink:#F3F1EB; --dark-muted:#A3AFBF; --dark-line:#24384F;
-  --f-display:"Unbounded", "Arial Black", system-ui, sans-serif;
-  --f-body:"Onest", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --f-mono:"IBM Plex Mono", ui-monospace, Consolas, monospace;
-  --max:1200px; --r:20px;
+  --cream:#FFF5E6; --paper:#FFFFFF; --ink:#1E1B3A; --muted:#5D5878;
+  --coral:#FF5B4A; --sun:#FFC53D; --mint:#2EC4A0; --lilac:#8E7CFF; --line:#EADFCB;
+  --f-display:"Lilita One", "Arial Rounded MT Bold", "Trebuchet MS", system-ui, sans-serif;
+  --f-body:"Fredoka", "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --max:1180px; color-scheme:light;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#0A1422; --surface:#102033; --surface-2:#16293F; --ink:#EEF0F2; --muted:#9AA7B7;
-  --line:#22364D; --navy:#C8D3E2; --gold:#D9B572; --gold-2:#E8CC94; --dark:#071019; --dark-2:#0F1F33; --dark-line:#1E3048; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#0A1422; --surface:#102033; --surface-2:#16293F; --ink:#EEF0F2; --muted:#9AA7B7;
-  --line:#22364D; --navy:#C8D3E2; --gold:#D9B572; --gold-2:#E8CC94; --dark:#071019; --dark-2:#0F1F33; --dark-line:#1E3048; color-scheme:dark}
-
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
-body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:1.0625rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+body{background:var(--cream);color:var(--ink);font-family:var(--f-body);font-size:1.08rem;line-height:1.55}
 a{color:inherit}
-:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
-.wrap{max-width:var(--max);margin-inline:auto;padding-left:max(20px, env(safe-area-inset-left,0px));padding-right:max(20px, env(safe-area-inset-right,0px))}
-h1,h2,h3{font-family:var(--f-display);margin:0;text-wrap:balance;letter-spacing:-.02em}
-h2{font-size:clamp(1.9rem,3.8vw,2.9rem);font-weight:600;line-height:1.1}
-h3{font-size:1.15rem;font-weight:600;line-height:1.25}
 p{margin:0}
-.kicker{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-mono);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
-.kicker::before{content:"";width:22px;height:1px;background:currentColor}
-.muted{color:var(--muted)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:52px;padding:0 26px;border-radius:999px;font-weight:600;font-size:.98rem;text-decoration:none;border:1px solid transparent;transition:transform .2s, background .2s, border-color .2s}
-.btn:hover{transform:translateY(-2px)}
-.btn-gold{background:var(--gold);color:#111}
-.btn-gold:hover{background:var(--gold-2)}
-.btn-ghost{border-color:rgba(242,241,236,.22);color:var(--dark-ink)}
-.btn-ghost:hover{border-color:rgba(242,241,236,.6)}
-.btn-ink{background:var(--ink);color:var(--bg)}
-.arrow{transition:transform .2s}
-.btn:hover .arrow{transform:translateX(3px)}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;margin:0;line-height:1.02;text-wrap:balance;letter-spacing:.005em}
+h2{font-size:clamp(2.2rem,5vw,3.6rem)}
+h3{font-size:1.55rem}
+:focus-visible{outline:3px solid var(--lilac);outline-offset:3px;border-radius:8px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+.wrap{max-width:var(--max);margin-inline:auto;padding-left:max(18px, env(safe-area-inset-left,0px));padding-right:max(18px, env(safe-area-inset-right,0px))}
+.tag{display:inline-block;font-weight:600;font-size:.85rem;padding:6px 14px;border-radius:999px;background:var(--ink);color:var(--cream);transform:rotate(-2deg)}
+.btn{display:inline-flex;align-items:center;gap:10px;height:54px;padding:0 26px;border-radius:999px;font-weight:600;font-size:1.02rem;text-decoration:none;border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink);transition:transform .15s, box-shadow .15s}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+.btn:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.btn-coral{background:var(--coral);color:var(--paper)}
+.btn-sun{background:var(--sun);color:var(--ink)}
+.btn-paper{background:var(--paper);color:var(--ink)}
+.mascot{display:block;color:var(--coral)}
 
-/* Navegação */
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:20;background:var(--dark)}
-.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:19;background:rgba(15,31,53,.88);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid var(--dark-line);color:var(--dark-ink)}
-.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;height:70px}
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
-.logo-icon{width:34px;height:34px;flex:none;color:var(--gold)}
-.logo-word{height:15px;width:auto;color:var(--dark-ink)}
-.foot-brand{display:flex;align-items:center;gap:12px;color:var(--navy)}
-.foot-brand .logo-icon{width:28px;height:28px;color:var(--gold)}
-.foot-brand .logo-word{height:12px;color:var(--navy)}
-.nav-links{display:flex;gap:30px;font-size:.93rem}
-.nav-links a{text-decoration:none;color:var(--dark-muted);transition:color .2s}
-.nav-links a:hover{color:var(--dark-ink)}
-.nav .btn{height:42px;padding:0 20px;font-size:.9rem}
-@media (max-width:880px){.nav-links{display:none}}
+/* Topo */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--cream)}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--cream);border-bottom:3px solid var(--ink)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:72px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand .mascot{width:40px;height:44px}
+.brand b{font-family:var(--f-display);font-weight:400;font-size:1.6rem;line-height:.9;display:block}
+.brand small{display:block;font-weight:600;color:var(--coral);font-size:.95rem;line-height:1}
+.links{display:flex;gap:24px;font-weight:500}
+.links a{text-decoration:none}
+.links a:hover{color:var(--coral)}
+.top .btn{height:44px;padding:0 18px;font-size:.92rem;box-shadow:3px 3px 0 var(--ink)}
+@media (max-width:900px){.links{display:none}}
+@media (max-width:420px){.top .btn{display:none}}
 
 /* Hero */
-.hero{background:var(--dark);color:var(--dark-ink);position:relative;overflow:hidden}
-.hero::before{content:"";position:absolute;inset:0;background:
-  radial-gradient(60% 70% at 78% 40%,rgba(200,161,90,.22),transparent 60%),
-  repeating-linear-gradient(180deg,rgba(255,255,255,.035) 0 1px,transparent 1px 6px);pointer-events:none}
-.hero .wrap{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding-block:clamp(56px,9vw,120px) clamp(56px,8vw,104px)}
-.hero h1{font-size:clamp(2.6rem,6.4vw,5.2rem);font-weight:700;line-height:1.02;letter-spacing:-.035em}
-.hero h1 em{font-style:normal;color:var(--gold)}
-.hero .sub{margin-top:26px;font-size:1.15rem;color:var(--dark-muted);max-width:52ch}
-.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
-.hero-meta{display:flex;flex-wrap:wrap;gap:28px;margin-top:52px;padding-top:28px;border-top:1px solid var(--dark-line)}
-.hero-meta div{display:flex;flex-direction:column;gap:2px}
-.hero-meta b{font-family:var(--f-display);font-weight:600;font-size:1.35rem;font-variant-numeric:tabular-nums}
-.hero-meta span{font-size:.85rem;color:var(--dark-muted)}
+.hero{padding-block:clamp(40px,7vw,88px) clamp(48px,7vw,96px);overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:32px;align-items:center}
+.hero h1{font-size:clamp(3rem,8vw,6.2rem)}
+.hero h1 .hl{color:var(--coral)}
+.hero h1 .wave{background:linear-gradient(transparent 62%,var(--sun) 62% 90%,transparent 90%)}
+.hero .sub{margin-top:22px;font-size:1.22rem;color:var(--muted);max-width:48ch}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px}
+.stage{position:relative;aspect-ratio:1;max-width:100%;}
+.blob{position:absolute;inset:6%;border-radius:46% 54% 50% 50%/52% 46% 54% 48%;background:var(--sun);border:3px solid var(--ink)}
+.stage .mascot{position:absolute;left:22%;top:12%;width:56%;height:auto;animation:bob 3.2s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-10px) rotate(-3deg)}}
+.bubble{position:absolute;right:0;top:4%;background:var(--paper);border:3px solid var(--ink);border-radius:20px;padding:10px 16px;font-weight:600;box-shadow:4px 4px 0 var(--ink);transform:rotate(4deg);max-width:60%}
+.bubble::after{content:"";position:absolute;left:18px;bottom:-14px;width:22px;height:22px;background:var(--paper);border-right:3px solid var(--ink);border-bottom:3px solid var(--ink);transform:rotate(45deg) skew(10deg,10deg)}
+.sticker{position:absolute;font-weight:700;font-size:.9rem;padding:8px 14px;border-radius:999px;border:3px solid var(--ink);white-space:nowrap}
+.s1{left:0;bottom:16%;background:var(--mint);color:var(--ink);transform:rotate(-8deg)}
+.s2{right:2%;bottom:6%;background:var(--lilac);color:var(--paper);transform:rotate(6deg)}
+@media (max-width:860px){.hero .wrap{grid-template-columns:1fr}.stage{max-width:420px;margin-inline:auto;width:100%}}
 
-/* Objeto em destaque */
-.stage{position:relative;aspect-ratio:1;max-width:100%;border-radius:28px;background:linear-gradient(160deg,var(--dark-2),#0A1626);border:1px solid var(--dark-line);overflow:hidden}
-.stage::after{content:"";position:absolute;left:12%;right:12%;bottom:14%;height:10%;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.6),transparent)}
-.obj{position:absolute;left:50%;bottom:20%;width:46%;height:62%;transform:translateX(-50%);z-index:1;
-  clip-path:polygon(32% 0,68% 0,64% 7%,84% 28%,90% 54%,80% 82%,70% 100%,30% 100%,20% 82%,10% 54%,16% 28%,36% 7%);
-  background:
-   repeating-linear-gradient(180deg,rgba(0,0,0,.18) 0 1px,transparent 1px 4px),
-   linear-gradient(90deg,#6B4E12 0%,#C8A15A 30%,#F3D78A 48%,#C8A15A 64%,#5A410E 100%)}
-.ring{position:absolute;left:50%;top:50%;width:84%;aspect-ratio:1;transform:translate(-50%,-52%);border-radius:50%;border:1px dashed rgba(242,241,236,.12);animation:spin 40s linear infinite}
-@keyframes spin{to{transform:translate(-50%,-52%) rotate(360deg)}}
-.pill{position:absolute;z-index:2;display:flex;align-items:center;gap:8px;padding:9px 14px;border-radius:999px;background:rgba(23,26,26,.86);border:1px solid var(--dark-line);font-family:var(--f-mono);font-size:.74rem;color:var(--dark-ink);backdrop-filter:blur(6px)}
-.pill i{width:7px;height:7px;border-radius:50%;background:#3DD68C;box-shadow:0 0 0 4px rgba(61,214,140,.18)}
-.p1{left:6%;top:8%}.p2{right:6%;top:30%}.p3{left:8%;bottom:8%}
-@media (max-width:900px){.hero .wrap{grid-template-columns:1fr}.stage{max-width:460px}}
-
-/* Faixa de categorias */
-.ticker{border-bottom:1px solid var(--line);background:var(--surface);overflow:hidden}
-.ticker-track{display:flex;gap:48px;padding-block:18px;width:max-content;animation:slide 38s linear infinite;font-family:var(--f-display);font-weight:500;font-size:.95rem;color:var(--muted);white-space:nowrap}
-.ticker-track span::after{content:"✦";margin-left:48px;color:var(--gold)}
+/* Faixa */
+.band{background:var(--ink);color:var(--cream);overflow:hidden;border-block:3px solid var(--ink)}
+.track{display:flex;gap:18px;width:max-content;padding-block:16px;animation:slide 34s linear infinite}
+.track span{font-family:var(--f-display);font-size:1.4rem;padding:4px 18px;border-radius:999px}
+.track span:nth-child(4n+1){background:var(--coral)}
+.track span:nth-child(4n+2){background:var(--sun);color:var(--ink)}
+.track span:nth-child(4n+3){background:var(--mint);color:var(--ink)}
+.track span:nth-child(4n+4){background:var(--lilac)}
 @keyframes slide{to{transform:translateX(-50%)}}
 
 /* Seções */
-.section{padding-block:clamp(72px,10vw,128px)}
-.sec-head{display:grid;grid-template-columns:1fr 1fr;gap:24px 48px;align-items:end;margin-bottom:48px}
-.sec-head .muted{max-width:48ch}
-@media (max-width:800px){.sec-head{grid-template-columns:1fr}}
+.section{padding-block:clamp(72px,10vw,120px)}
+.head{display:flex;flex-direction:column;gap:14px;margin-bottom:44px;max-width:720px}
+.head p{color:var(--muted);font-size:1.15rem}
 
-/* Bento de produtos */
-.bento{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px}
-.card{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:28px;display:flex;flex-direction:column;justify-content:space-between;gap:24px;min-height:260px;overflow:hidden;min-width:0;transition:border-color .25s, transform .25s}
-.card:hover{border-color:var(--gold);transform:translateY(-3px)}
-.card .top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
-.card .tag{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.06em;color:var(--muted);border:1px solid var(--line);padding:4px 10px;border-radius:999px;white-space:nowrap}
-.card p{color:var(--muted);font-size:.97rem;max-width:42ch}
-.card .art{position:absolute;right:-6%;bottom:-8%;width:46%;aspect-ratio:1;opacity:.95;pointer-events:none}
-.card .body{position:relative;z-index:1;display:flex;flex-direction:column;gap:10px}
-.c-lg{grid-column:span 7;min-height:380px}
-.c-md{grid-column:span 5;min-height:380px}
-.c-sm{grid-column:span 4}
-.card.dark{background:var(--dark-2);border-color:var(--dark-line);color:var(--dark-ink)}
-.card.dark p,.card.dark .tag{color:var(--dark-muted);border-color:var(--dark-line)}
-/* formas estilizadas em camadas */
-.shape{position:absolute;inset:0;background:repeating-linear-gradient(180deg,rgba(0,0,0,.14) 0 1px,transparent 1px 5px),var(--fill)}
-.s-saint{clip-path:polygon(42% 0,58% 0,62% 14%,56% 18%,72% 26%,78% 100%,22% 100%,28% 26%,44% 18%,38% 14%)}
-.s-tree{clip-path:polygon(50% 0,64% 22%,58% 22%,74% 46%,66% 46%,84% 74%,56% 74%,56% 90%,44% 90%,44% 74%,16% 74%,34% 46%,26% 46%,42% 22%,36% 22%)}
-.s-vase{clip-path:polygon(34% 4%,66% 4%,62% 12%,82% 34%,84% 60%,72% 92%,28% 92%,16% 60%,18% 34%,38% 12%)}
-.s-bust{clip-path:polygon(38% 6%,62% 6%,68% 30%,60% 46%,86% 64%,90% 96%,10% 96%,14% 64%,40% 46%,32% 30%)}
-.s-gear{border-radius:50%;-webkit-mask:radial-gradient(circle,transparent 22%,#000 23%);mask:radial-gradient(circle,transparent 22%,#000 23%);inset:14%}
-.s-frame{inset:12%;border-radius:8px;-webkit-mask:linear-gradient(#000,#000) content-box exclude,linear-gradient(#000,#000);mask:linear-gradient(#000,#000) content-box exclude,linear-gradient(#000,#000);padding:12%}
-@media (max-width:960px){.c-lg,.c-md{grid-column:span 12}.c-sm{grid-column:span 6}}
-@media (max-width:600px){.c-sm{grid-column:span 12}.card{min-height:220px}.c-lg,.c-md{min-height:300px}}
-
+/* Coleções */
+.cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}
+.col{position:relative;border:3px solid var(--ink);border-radius:26px;padding:26px;box-shadow:6px 6px 0 var(--ink);display:flex;flex-direction:column;gap:10px;min-width:0;transition:transform .2s}
+.col:nth-child(odd){transform:rotate(-1.2deg)}
+.col:nth-child(even){transform:rotate(1deg)}
+.col:hover{transform:rotate(0) translateY(-4px)}
+.col .emo{width:64px;height:70px}
+.col p{font-size:1rem}
+.col .items{font-size:.92rem;font-weight:500;opacity:.85}
+.c-coral{background:var(--coral);color:var(--paper)}
+.c-sun{background:var(--sun)}
+.c-mint{background:var(--mint)}
+.c-lilac{background:var(--lilac);color:var(--paper)}
+.c-paper{background:var(--paper)}
+.c-ink{background:var(--ink);color:var(--cream)}
+@media (max-width:900px){.cols{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:580px){.cols{grid-template-columns:1fr}}
 
 /* Pronta entrega x encomenda */
-.ways{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.way{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:clamp(28px,4vw,40px);display:flex;flex-direction:column;gap:16px;min-width:0}
-.way-stock{background:var(--dark);border-color:var(--dark-line);color:var(--dark-ink)}
-.way-stock p,.way-stock li{color:var(--dark-muted)}
-.way h3{font-size:1.6rem}
-.way p{color:var(--muted)}
-.way ul{list-style:none;padding:0;margin:0 0 8px;display:grid;gap:8px;font-size:.96rem;color:var(--muted)}
-.way li{display:flex;gap:10px}
-.way li::before{content:"";flex:none;width:6px;height:6px;margin-top:.6em;border-radius:50%;background:var(--gold)}
+.ways{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.way{background:var(--paper);border:3px solid var(--ink);border-radius:28px;padding:clamp(26px,4vw,40px);display:flex;flex-direction:column;gap:14px;box-shadow:6px 6px 0 var(--ink);min-width:0}
+.way.fast{background:var(--mint)}
+.way ul{list-style:none;padding:0;margin:0 0 6px;display:grid;gap:8px}
+.way li{display:flex;gap:10px;align-items:flex-start}
+.way li::before{content:"";flex:none;width:12px;height:12px;margin-top:.45em;border-radius:50%;background:var(--ink)}
 .way .btn{align-self:flex-start;margin-top:auto}
-.badge{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;font-family:var(--f-mono);font-size:.74rem;letter-spacing:.06em;padding:6px 12px;border-radius:999px;background:rgba(61,214,140,.14);color:#5BE3A2}
-.badge i{width:7px;height:7px;border-radius:50%;background:#3DD68C}
-.badge.alt{background:var(--surface-2);color:var(--muted)}
 @media (max-width:820px){.ways{grid-template-columns:1fr}}
 
 /* Personalizados */
-.custom{background:var(--surface);border-block:1px solid var(--line)}
-.custom .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,88px);align-items:center}
-.showcase{position:relative;aspect-ratio:4/5;max-width:100%;border-radius:24px;background:var(--surface-2);display:grid;place-items:center;overflow:hidden}
-.box{width:64%;aspect-ratio:3/4;border-radius:10px;background:linear-gradient(145deg,#26406A,#0F1F35);padding:7%;box-shadow:0 40px 80px -30px rgba(0,0,0,.45),inset 0 0 0 1px rgba(255,255,255,.06)}
-.box .in{height:100%;border-radius:4px;background:radial-gradient(80% 60% at 50% 30%,#20375A,#0D1A2D);position:relative;display:grid;place-items:center;overflow:hidden}
-.mini{width:40%;aspect-ratio:1/2.1;background:repeating-linear-gradient(180deg,rgba(0,0,0,.18) 0 1px,transparent 1px 4px),linear-gradient(90deg,#B98E2A,#F0D07E 50%,#9C7420);clip-path:polygon(35% 0,65% 0,70% 18%,60% 22%,88% 30%,92% 60%,76% 60%,74% 100%,56% 100%,50% 70%,44% 100%,26% 100%,24% 60%,8% 60%,12% 30%,40% 22%,30% 18%)}
-.box .plate{position:absolute;bottom:7%;left:20%;right:20%;padding:5px 0;text-align:center;border-radius:3px;background:#C8A15A;color:#111;font-family:var(--f-mono);font-size:.62rem;letter-spacing:.14em}
-.feat-list{list-style:none;padding:0;margin:32px 0 36px;display:grid;gap:0;border-top:1px solid var(--line)}
-.feat-list li{display:grid;grid-template-columns:28px 1fr;gap:14px;padding:18px 0;border-bottom:1px solid var(--line)}
-.check{width:22px;height:22px;border-radius:50%;background:var(--gold);display:grid;place-items:center;margin-top:2px}
-.check svg{width:12px;height:12px}
-.feat-list b{display:block;font-weight:600}
-.feat-list span{color:var(--muted);font-size:.95rem}
-@media (max-width:900px){.custom .wrap{grid-template-columns:1fr}.showcase{max-width:460px}}
+.custom{background:var(--lilac);color:var(--paper);border-block:3px solid var(--ink)}
+.custom .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(36px,6vw,80px);align-items:center}
+.custom p{color:#F3F0FF;font-size:1.15rem}
+.frame{aspect-ratio:4/5;max-width:100%;background:var(--sun);border:3px solid var(--ink);border-radius:18px;padding:9%;box-shadow:8px 8px 0 var(--ink);transform:rotate(-3deg)}
+.frame .in{height:100%;border:3px solid var(--ink);border-radius:10px;background:var(--cream);display:grid;place-items:center;position:relative}
+.frame .mini{width:46%;color:var(--mint)}
+.frame .plate{position:absolute;bottom:7%;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--sun);font-family:var(--f-display);padding:4px 16px;border-radius:8px;font-size:1.05rem;white-space:nowrap}
+.checks{list-style:none;padding:0;margin:26px 0 30px;display:grid;gap:12px}
+.checks li{display:flex;gap:12px;align-items:flex-start;font-weight:500}
+.checks li::before{content:"✓";flex:none;width:28px;height:28px;border-radius:50%;background:var(--sun);color:var(--ink);display:grid;place-items:center;font-weight:700;border:2px solid var(--ink)}
+@media (max-width:860px){.custom .wrap{grid-template-columns:1fr}.frame{max-width:340px}}
 
-/* Processo */
-.process{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;counter-reset:s}
-.step{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:28px;display:flex;flex-direction:column;gap:14px;min-width:0}
-.step .num{font-family:var(--f-mono);font-size:.8rem;color:var(--gold)}
-.step .bar{height:4px;border-radius:4px;background:var(--surface-2);overflow:hidden}
-.step .bar i{display:block;height:100%;background:var(--gold);width:var(--w)}
-.step p{color:var(--muted);font-size:.96rem}
-@media (max-width:960px){.process{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:540px){.process{grid-template-columns:1fr}}
+/* Como funciona */
+.steps{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.step{background:var(--paper);border:3px solid var(--ink);border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.step .n{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font-family:var(--f-display);font-size:1.4rem;border:3px solid var(--ink)}
+.step:nth-child(1) .n{background:var(--coral);color:var(--paper)}
+.step:nth-child(2) .n{background:var(--sun)}
+.step:nth-child(3) .n{background:var(--mint)}
+.step:nth-child(4) .n{background:var(--lilac);color:var(--paper)}
+.step p{color:var(--muted);font-size:1rem}
+@media (max-width:960px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.steps{grid-template-columns:1fr}}
 
-/* Diferenciais */
-.diffs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px 40px;border-top:1px solid var(--line);padding-top:48px}
-.diff{display:flex;flex-direction:column;gap:12px;min-width:0}
-.ico{width:44px;height:44px;border-radius:12px;border:1px solid var(--line);display:grid;place-items:center;color:var(--gold)}
-.ico svg{width:22px;height:22px}
-.diff p{color:var(--muted);font-size:.97rem}
-@media (max-width:860px){.diffs{grid-template-columns:1fr 1fr}}
-@media (max-width:540px){.diffs{grid-template-columns:1fr}}
-
-/* FAQ */
-.faq .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(32px,6vw,88px)}
-.faq-list{border-top:1px solid var(--line)}
-details{border-bottom:1px solid var(--line)}
-summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 0;font-weight:600;font-size:1.05rem}
+/* Dúvidas */
+.faq .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(30px,6vw,80px)}
+.faq-list{display:grid;gap:12px}
+details{background:var(--paper);border:3px solid var(--ink);border-radius:20px;padding:0 22px}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 0;font-weight:600;font-size:1.08rem}
 summary::-webkit-details-marker{display:none}
-summary .pm{flex:none;width:28px;height:28px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;transition:transform .25s, background .25s}
-details[open] summary .pm{transform:rotate(45deg);background:var(--gold);border-color:var(--gold);color:#111}
-details p{padding:0 48px 22px 0;color:var(--muted)}
+summary::after{content:"+";flex:none;width:30px;height:30px;border-radius:50%;background:var(--sun);border:2px solid var(--ink);display:grid;place-items:center;font-weight:700;transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg);background:var(--coral);color:var(--paper)}
+details p{padding:0 0 20px;color:var(--muted)}
 @media (max-width:860px){.faq .wrap{grid-template-columns:1fr}}
 
-/* CTA final */
-.cta{padding-bottom:clamp(72px,10vw,128px)}
-.cta-box{position:relative;overflow:hidden;border-radius:32px;background:var(--dark);color:var(--dark-ink);padding:clamp(40px,7vw,88px) clamp(24px,6vw,80px);display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:end}
-.cta-box::before{content:"";position:absolute;inset:0;background:radial-gradient(50% 80% at 100% 0,rgba(200,161,90,.28),transparent 70%),repeating-linear-gradient(180deg,rgba(255,255,255,.03) 0 1px,transparent 1px 6px);pointer-events:none}
-.cta-box > *{position:relative}
-.cta-box h2{font-size:clamp(2rem,4.6vw,3.6rem);font-weight:700}
-.cta-box .sub{margin-top:18px;color:var(--dark-muted);max-width:44ch}
-.channels{display:grid;gap:10px}
-.ch{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 22px;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid var(--dark-line);text-decoration:none;transition:background .2s,border-color .2s;min-width:0}
-.ch:hover{background:rgba(255,255,255,.08);border-color:var(--gold)}
-.ch small{display:block;font-family:var(--f-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
-.ch b{font-weight:600;overflow-wrap:anywhere}
-@media (max-width:860px){.cta-box{grid-template-columns:1fr}}
+/* Contato */
+.cta{background:var(--coral);color:var(--paper);border-top:3px solid var(--ink)}
+.cta .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.cta h2{font-size:clamp(2.4rem,6vw,4.4rem)}
+.cta .sub{margin-top:16px;font-size:1.2rem;color:#FFE9E5;max-width:42ch}
+.chs{display:grid;gap:14px}
+.ch{display:flex;align-items:center;justify-content:space-between;gap:14px;background:var(--paper);color:var(--ink);border:3px solid var(--ink);border-radius:20px;padding:16px 20px;text-decoration:none;box-shadow:5px 5px 0 var(--ink);transition:transform .15s,box-shadow .15s;min-width:0}
+.ch:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}
+.ch small{display:block;font-weight:600;font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:var(--coral)}
+.ch b{font-family:var(--f-display);font-weight:400;font-size:1.35rem;overflow-wrap:anywhere}
+.ch .go{flex:none;width:40px;height:40px;border-radius:50%;background:var(--sun);border:2px solid var(--ink);display:grid;place-items:center;font-weight:700}
+@media (max-width:860px){.cta .wrap{grid-template-columns:1fr}}
 
-footer{border-top:1px solid var(--line);padding-block:40px;font-size:.9rem;color:var(--muted)}
+footer{background:var(--ink);color:var(--cream);padding-block:34px;font-size:.95rem}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px}
-footer nav{display:flex;flex-wrap:wrap;gap:22px}
+footer .brand .mascot{color:var(--coral)}
+footer .brand b{color:var(--cream)}
+footer .brand small{color:var(--sun)}
+footer nav{display:flex;flex-wrap:wrap;gap:20px}
 footer a{text-decoration:none}
-footer a:hover{color:var(--ink)}
+footer a:hover{color:var(--sun)}
 </style>
 </head>
 <body>
 
-<header class="nav">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="bendito" viewBox="0 0 100 110">
+    <ellipse cx="50" cy="12" rx="20" ry="5.5" fill="none" stroke="var(--halo, #FFC53D)" stroke-width="5" transform="rotate(-9 50 12)"/>
+    <rect x="14" y="24" width="72" height="13" rx="6.5" fill="var(--flange, #1E1B3A)"/>
+    <rect x="14" y="83" width="72" height="13" rx="6.5" fill="var(--flange, #1E1B3A)"/>
+    <rect x="22" y="34" width="56" height="52" rx="6" fill="currentColor"/>
+    <g fill="#1E1B3A" opacity=".16"><rect x="26" y="42" width="48" height="3.2" rx="1.6"/><rect x="26" y="52" width="48" height="3.2" rx="1.6"/><rect x="26" y="62" width="48" height="3.2" rx="1.6"/><rect x="26" y="72" width="48" height="3.2" rx="1.6"/></g>
+    <ellipse cx="40" cy="55" rx="3.6" ry="4.6" fill="#1E1B3A"/>
+    <ellipse cx="60" cy="55" rx="3.6" ry="4.6" fill="#1E1B3A"/>
+    <path d="M41 66 Q50 74 59 66" fill="none" stroke="#1E1B3A" stroke-width="3.6" stroke-linecap="round"/>
+    <ellipse cx="33" cy="64" rx="4" ry="2.4" fill="#FFF5E6" opacity=".55"/>
+    <ellipse cx="67" cy="64" rx="4" ry="2.4" fill="#FFF5E6" opacity=".55"/>
+    <path d="M78 76 C88 76 92 86 86 96 C82 103 92 108 98 104" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+  </symbol>
+</svg>
+
+<header class="top">
   <div class="wrap">
-    <a class="brand" href="#inicio" aria-label="ArtNexo 3D, início">
-      <svg class="logo-icon" viewBox="0 0 100 100" aria-hidden="true"><path fill="currentColor" d="M93.30,25.00 L58.12,4.69 L58.12,47.45 L68.62,57.95 L68.62,22.88 L82.80,31.07 L82.80,68.93 L50.00,87.87 L49.28,87.46 L44.03,96.55 L50.00,100.00 L93.30,75.00 Z M6.70,25.00 L6.70,75.00 L41.88,95.31 L41.88,49.31 L59.66,67.09 L67.09,59.66 L31.38,23.95 L31.38,77.12 L17.20,68.93 L17.20,31.07 L30.70,23.27 L50.00,12.13 L50.72,12.54 L55.97,3.45 L50.00,0.00 Z"/></svg><svg class="logo-word" viewBox="0 -1.2 252.7 30.6" aria-hidden="true"><path fill="currentColor" d="M19.96 23.84H9.48L7.8 28.8H0.64L10.8 0.72H18.72L28.88 28.8H21.64ZM18.2 18.56 14.72 8.28 11.28 18.56ZM46.28 28.8 40.44 18.2H38.8V28.8H31.96V0.72H43.44Q46.76 0.72 49.1 1.88Q51.44 3.04 52.6 5.06Q53.76 7.08 53.76 9.56Q53.76 12.36 52.18 14.56Q50.6 16.76 47.52 17.68L54.0 28.8ZM38.8 13.36H43.04Q44.92 13.36 45.86 12.44Q46.8 11.52 46.8 9.84Q46.8 8.24 45.86 7.32Q44.92 6.4 43.04 6.4H38.8ZM78.24 0.72V6.2H70.8V28.8H63.96V6.2H56.52V0.72ZM106.8 28.8H99.96L88.52 11.48V28.8H81.68V0.72H88.52L99.96 18.12V0.72H106.8ZM118.6 6.2V11.88H127.76V17.16H118.6V23.32H128.96V28.8H111.76V0.72H128.96V6.2ZM150.6 28.8 144.88 20.2 139.84 28.8H132.08L141.08 14.52L131.88 0.72H139.84L145.48 9.2L150.44 0.72H158.2L149.28 14.88L158.56 28.8ZM160.84 14.68Q160.84 10.56 162.78 7.28Q164.72 4.0 168.02 2.16Q171.32 0.32 175.28 0.32Q179.24 0.32 182.54 2.16Q185.84 4.0 187.74 7.28Q189.64 10.56 189.64 14.68Q189.64 18.8 187.72 22.1Q185.8 25.4 182.52 27.24Q179.24 29.08 175.28 29.08Q171.32 29.08 168.02 27.24Q164.72 25.4 162.78 22.1Q160.84 18.8 160.84 14.68ZM182.68 14.68Q182.68 10.96 180.66 8.74Q178.64 6.52 175.28 6.52Q171.88 6.52 169.86 8.72Q167.84 10.92 167.84 14.68Q167.84 18.4 169.86 20.62Q171.88 22.84 175.28 22.84Q178.64 22.84 180.66 20.6Q182.68 18.36 182.68 14.68ZM211.44 -1.08Q214.44 -1.08 216.58 -0.04Q218.72 1.0 219.82 2.8Q220.92 4.6 220.92 6.84Q220.92 9.48 219.6 11.14Q218.28 12.8 216.52 13.4V13.56Q218.8 14.32 220.12 16.08Q221.44 17.84 221.44 20.6Q221.44 23.08 220.3 24.98Q219.16 26.88 216.98 27.96Q214.8 29.04 211.8 29.04Q207.0 29.04 204.14 26.68Q201.28 24.32 201.12 19.56H207.76Q207.8 21.32 208.76 22.34Q209.72 23.36 211.56 23.36Q213.12 23.36 213.98 22.46Q214.84 21.56 214.84 20.08Q214.84 18.16 213.62 17.3Q212.4 16.44 209.72 16.44H208.44V10.88H209.72Q211.76 10.88 213.02 10.18Q214.28 9.48 214.28 7.68Q214.28 6.24 213.48 5.44Q212.68 4.64 211.28 4.64Q209.76 4.64 209.02 5.56Q208.28 6.48 208.16 7.84H201.48Q201.64 3.56 204.28 1.24Q206.92 -1.08 211.44 -1.08ZM251.36 14.76Q251.36 18.88 249.54 22.08Q247.72 25.28 244.38 27.04Q241.04 28.8 236.64 28.8H226.12V0.72H236.64Q241.08 0.72 244.4 2.48Q247.72 4.24 249.54 7.42Q251.36 10.6 251.36 14.76ZM244.4 14.76Q244.4 10.88 242.24 8.72Q240.08 6.56 236.2 6.56H232.96V22.88H236.2Q240.08 22.88 242.24 20.76Q244.4 18.64 244.4 14.76Z"/></svg>
+    <a class="brand" href="#inicio" aria-label="Bendito Filamento, início">
+      <svg class="mascot" viewBox="0 0 100 110" aria-hidden="true"><use href="#bendito"/></svg>
+      <span><b>Bendito</b><small>filamento</small></span>
     </a>
-    <nav class="nav-links" aria-label="Seções">
-      <a href="#produtos">Produtos</a>
+    <nav class="links" aria-label="Seções">
+      <a href="#colecoes">Coleções</a>
       <a href="#pronta-entrega">Pronta entrega</a>
       <a href="#personalizados">Personalizados</a>
-      <a href="#processo">Como funciona</a>
       <a href="#duvidas">Dúvidas</a>
     </nav>
-    <a class="btn btn-gold" href="#contato">Solicitar orçamento</a>
+    <a class="btn btn-coral" href="#contato">Quero uma!</a>
   </div>
 </header>
 
@@ -241,89 +213,97 @@ footer a:hover{color:var(--ink)}
   <section class="hero" id="inicio">
     <div class="wrap">
       <div>
-        <span class="kicker">Impressão 3D · Acabamento caprichado</span>
-        <h1 style="margin-top:22px">Ideias que ganham <em>forma.</em></h1>
-        <p class="sub">Peças decorativas, religiosas e personalizadas, impressas em 3D com alta precisão e acabamento cuidadoso, muitas delas pintadas à mão. Peças a pronta entrega ou feitas sob encomenda, com envio para todo o Brasil.</p>
+        <span class="tag">Impressão 3D com alma</span>
+        <h1 style="margin-top:20px">Bendita a hora que você <span class="hl">achou</span> a <span class="wave">gente.</span></h1>
+        <p class="sub">Decoração, presentes, enfeites de Natal, peças com nome e um monte de coisa legal, impressas camada por camada aqui em Minas e enviadas para todo o Brasil.</p>
         <div class="ctas">
-          <a class="btn btn-gold" href="#contato">Solicitar orçamento <span class="arrow">→</span></a>
-          <a class="btn btn-ghost" href="#pronta-entrega">Ver pronta entrega</a>
-        </div>
-        <div class="hero-meta">
-          <div><b>0,12 mm</b><span>precisão por camada</span></div>
-          <div><b>1 a 1</b><span>conferida antes do envio</span></div>
-          <div><b>Pronta</b><span>entrega ou sob encomenda</span></div>
+          <a class="btn btn-coral" href="#pronta-entrega">Ver o que tem pronto</a>
+          <a class="btn btn-paper" href="#personalizados">Fazer do meu jeito</a>
         </div>
       </div>
-      <div class="stage" role="img" aria-label="Vaso decorativo dourado em destaque">
-        <div class="ring"></div>
-        <div class="obj"></div>
-        <span class="pill p1"><i></i>Pronta entrega</span>
-        <span class="pill p2">PLA · acabamento dourado</span>
-        <span class="pill p3">Vaso decorativo · 18 cm</span>
+      <div class="stage" role="img" aria-label="Bendito, o mascote: um carretel de filamento sorridente com auréola">
+        <div class="blob"></div>
+        <svg class="mascot" viewBox="0 0 100 110" aria-hidden="true"><use href="#bendito"/></svg>
+        <span class="bubble">Oi! Eu sou o Bendito. Viro qualquer coisa.</span>
+        <span class="sticker s1">pronta entrega!</span>
+        <span class="sticker s2">feito com capricho</span>
       </div>
     </div>
   </section>
 
-  <div class="ticker" aria-hidden="true">
-    <div class="ticker-track">
-      <span>Coleção Natal</span><span>Natal Monstruoso</span><span>Arte sacra</span><span>Vasos decorativos</span><span>Presentes com nome</span><span>Pronta entrega</span>
-      <span>Coleção Natal</span><span>Natal Monstruoso</span><span>Arte sacra</span><span>Vasos decorativos</span><span>Presentes com nome</span><span>Pronta entrega</span>
+  <div class="band" aria-hidden="true">
+    <div class="track">
+      <span>Natal</span><span>Natal Monstruoso</span><span>Vasos</span><span>Presentes com nome</span><span>Fé</span><span>Miniaturas</span><span>Utilitários</span><span>Pronta entrega</span>
+      <span>Natal</span><span>Natal Monstruoso</span><span>Vasos</span><span>Presentes com nome</span><span>Fé</span><span>Miniaturas</span><span>Utilitários</span><span>Pronta entrega</span>
     </div>
   </div>
 
-  <section class="section" id="produtos">
+  <section class="section" id="colecoes">
     <div class="wrap">
-      <div class="sec-head">
-        <div><span class="kicker">Produtos</span><h2 style="margin-top:16px">Coleções para decorar, presentear e usar</h2></div>
-        <p class="muted">Cada peça pode ser ajustada em tamanho, cor e acabamento. Escolha uma linha e peça seu orçamento.</p>
+      <div class="head">
+        <span class="tag" style="align-self:flex-start;background:var(--coral)">Coleções</span>
+        <h2>Tem de tudo. E tudo tem um quê de bendito.</h2>
+        <p>Escolha a sua turma. Tamanho, cor e nome a gente ajusta.</p>
       </div>
-      <div class="bento">
-        <article class="card c-lg dark">
-          <div class="top"><span class="tag">Coleção em destaque</span></div>
-          <div class="art" style="width:40%;right:4%;bottom:0"><div class="shape s-tree" style="--fill:linear-gradient(90deg,#1F5C3F,#4FB07D 50%,#1F5C3F)"></div></div>
-          <div class="body"><h3 style="font-size:1.6rem">Natal</h3><p>Duas linhas para a sua árvore. A <b>Coleção Natal</b> traz os clássicos: Papai Noel, Mamãe Noel, rena, boneco de neve, elfo e soldadinho. O <b>Natal Monstruoso</b> tem enfeites com dentes e olhos esbugalhados: guirlanda, bola, biscoito e quebra-nozes monstro.</p></div>
+      <div class="cols">
+        <article class="col c-coral">
+          <svg class="emo mascot" viewBox="0 0 100 110" style="color:var(--sun);--flange:var(--ink)" aria-hidden="true"><use href="#bendito"/></svg>
+          <h3>Natal</h3>
+          <p>Os clássicos que deixam a árvore mais feliz.</p>
+          <p class="items">Papai Noel, Mamãe Noel, rena, boneco de neve, elfo, soldadinho</p>
         </article>
-        <article class="card c-md">
-          <div class="top"><span class="tag">Fé e devoção</span></div>
-          <div class="art"><div class="shape s-saint" style="--fill:linear-gradient(90deg,#8C7340,#E6CF9C 50%,#8C7340)"></div></div>
-          <div class="body"><h3 style="font-size:1.6rem">Arte sacra</h3><p>Mãe Abençoada, Pomba da Paz, luminária do Padre Cícero e bandeja cruz com porta-velas.</p></div>
+        <article class="col c-lilac">
+          <svg class="emo mascot" viewBox="0 0 100 110" style="color:var(--mint)" aria-hidden="true"><use href="#bendito"/></svg>
+          <h3>Natal Monstruoso</h3>
+          <p>Enfeites com dentes e olhos esbugalhados. Fofos e um pouco assustadores.</p>
+          <p class="items">Guirlanda, bola, biscoito e quebra-nozes monstro</p>
         </article>
-        <article class="card c-sm">
-          <div class="art"><div class="shape s-vase" style="--fill:linear-gradient(90deg,#8A8F8C,#D9DCDA 50%,#8A8F8C)"></div></div>
-          <div class="body"><h3>Vasos decorativos</h3><p>Formas geométricas e orgânicas para plantas e arranjos.</p></div>
+        <article class="col c-mint">
+          <svg class="emo mascot" viewBox="0 0 100 110" style="color:var(--coral)" aria-hidden="true"><use href="#bendito"/></svg>
+          <h3>Casa e vasos</h3>
+          <p>Vasos, cachepôs e objetos para deixar a casa com mais personalidade.</p>
+          <p class="items">Vasos geométricos, orgânicos e decorativos</p>
         </article>
-        <article class="card c-sm">
-          <div class="art"><div class="shape s-frame" style="--fill:linear-gradient(90deg,#8C6A25,#E3C484 50%,#8C6A25)"></div></div>
-          <div class="body"><h3>Presentes com nome</h3><p>Enfeites, chaveiros, porta-medalhas e miniaturas com o nome de quem você ama.</p></div>
+        <article class="col c-sun">
+          <svg class="emo mascot" viewBox="0 0 100 110" style="color:var(--paper);--halo:var(--coral)" aria-hidden="true"><use href="#bendito"/></svg>
+          <h3>Fé</h3>
+          <p>Peças religiosas delicadas, para casa, oratório ou presente.</p>
+          <p class="items">Mãe Abençoada, Pomba da Paz, luminária do Padre Cícero, porta-velas</p>
         </article>
-        <article class="card c-sm">
-          <div class="art"><div class="shape s-gear" style="--fill:linear-gradient(90deg,#3E4C5E,#8E9BAD 50%,#3E4C5E)"></div></div>
-          <div class="body"><h3>Utilitários</h3><p>Suportes, organizadores e peças funcionais sob medida.</p></div>
+        <article class="col c-paper">
+          <svg class="emo mascot" viewBox="0 0 100 110" style="color:var(--lilac)" aria-hidden="true"><use href="#bendito"/></svg>
+          <h3>Presentes com nome</h3>
+          <p>Aquele presente que ninguém mais vai dar igual.</p>
+          <p class="items">Enfeites, chaveiros, porta-medalhas, família de mesa</p>
+        </article>
+        <article class="col c-ink">
+          <svg class="emo mascot" viewBox="0 0 100 110" style="color:var(--mint);--flange:var(--cream)" aria-hidden="true"><use href="#bendito"/></svg>
+          <h3>Utilitários</h3>
+          <p>Suportes, organizadores e soluções feitas sob medida.</p>
+          <p class="items">Se dá para imaginar, dá para imprimir</p>
         </article>
       </div>
     </div>
   </section>
 
-  <section class="section stock" id="pronta-entrega" style="padding-top:0">
+  <section class="section" id="pronta-entrega" style="padding-top:0">
     <div class="wrap">
-      <div class="sec-head">
-        <div><span class="kicker">Duas formas de comprar</span><h2 style="margin-top:16px">Pronta entrega ou feita para você</h2></div>
-        <p class="muted">Temos peças prontas em estoque para envio rápido. Se quiser algo diferente, produzimos sob encomenda.</p>
+      <div class="head">
+        <span class="tag" style="align-self:flex-start;background:var(--mint);color:var(--ink)">Dois jeitos de comprar</span>
+        <h2>Pronto pra levar ou feito pra você</h2>
       </div>
       <div class="ways">
-        <div class="way way-stock">
-          <span class="badge"><i></i>Em estoque</span>
+        <div class="way fast">
           <h3>Pronta entrega</h3>
-          <p>Peças já impressas e finalizadas, prontas para sair. Ideal para presentes de última hora e decoração de Natal.</p>
-          <ul><li>Envio logo após a confirmação do pagamento</li><li>Modelos mais procurados de cada coleção</li><li>Disponível também na Shopee</li></ul>
-          <a class="btn btn-gold" href="https://wa.me/5531992593387?text=Ol%C3%A1!%20Quero%20ver%20as%20pe%C3%A7as%20a%20pronta%20entrega." target="_blank" rel="noopener">Ver peças disponíveis <span class="arrow">→</span></a>
+          <p>Peças já impressas e finalizadas, esperando um dono. Perfeito para presente de última hora.</p>
+          <ul><li>Sai logo depois do pagamento</li><li>Os favoritos de cada coleção</li><li>Também na nossa loja da Shopee</li></ul>
+          <a class="btn btn-paper" href="https://wa.me/5531992593387?text=Oi!%20Quero%20ver%20o%20que%20tem%20a%20pronta%20entrega." target="_blank" rel="noopener">Ver o que tem pronto</a>
         </div>
         <div class="way">
-          <span class="badge alt">Personalizado</span>
           <h3>Sob encomenda</h3>
-          <p>Escolha cor, tamanho e acabamento, coloque nomes e datas ou traga sua própria ideia.</p>
-          <ul><li>Orçamento com valor e prazo antes de produzir</li><li>Aprovação do modelo antes da impressão</li><li>Miniaturas e presentes com nome</li></ul>
-          <a class="btn btn-ink" href="#contato">Pedir orçamento <span class="arrow">→</span></a>
+          <p>Cor, tamanho, nome, data ou uma ideia maluca só sua. A gente dá forma.</p>
+          <ul><li>Orçamento com valor e prazo antes de começar</li><li>Você aprova o modelo antes de imprimir</li><li>Miniaturas e presentes com nome</li></ul>
+          <a class="btn btn-sun" href="#contato">Pedir orçamento</a>
         </div>
       </div>
     </div>
@@ -331,79 +311,66 @@ footer a:hover{color:var(--ink)}
 
   <section class="section custom" id="personalizados">
     <div class="wrap">
-      <div class="showcase" role="img" aria-label="Quadro com miniatura personalizada">
-        <div class="box"><div class="in"><div class="mini"></div><span class="plate">SEU NOME</span></div></div>
+      <div class="frame" role="img" aria-label="Quadrinho com miniatura personalizada">
+        <div class="in"><svg class="mini mascot" viewBox="0 0 100 110" aria-hidden="true"><use href="#bendito"/></svg><span class="plate">SEU NOME</span></div>
       </div>
       <div>
-        <span class="kicker">Personalizados</span>
-        <h2 style="margin-top:16px">Sua miniatura, num quadro feito para você</h2>
-        <p class="muted" style="margin-top:18px;max-width:52ch">A partir de uma foto ou ideia, criamos um personagem exclusivo, impresso e pintado à mão, montado em um quadro para parede ou estante.</p>
-        <ul class="feat-list">
-          <li><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="#111" stroke-width="2"><path d="m2.5 6.2 2.2 2.2 4.8-4.8"/></svg></span><div><b>Presente único</b><span>Aniversários, Natal, Dia dos Pais e das Mães, formaturas e casais.</span></div></li>
-          <li><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="#111" stroke-width="2"><path d="m2.5 6.2 2.2 2.2 4.8-4.8"/></svg></span><div><b>Com o nome de quem você ama</b><span>Enfeite de árvore, chaveiro, porta-medalhas e família de mesa com nomes.</span></div></li>
-          <li><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="#111" stroke-width="2"><path d="m2.5 6.2 2.2 2.2 4.8-4.8"/></svg></span><div><b>Do seu jeito</b><span>Roupa, profissão, hobby, time ou pet.</span></div></li>
-          <li><span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="#111" stroke-width="2"><path d="m2.5 6.2 2.2 2.2 4.8-4.8"/></svg></span><div><b>Aprovação antes da produção</b><span>Você vê o modelo e aprova antes de imprimir.</span></div></li>
+        <span class="tag" style="background:var(--sun);color:var(--ink)">Personalizados</span>
+        <h2 style="margin-top:18px">Você, em miniatura. Num quadrinho.</h2>
+        <p style="margin-top:16px">Manda uma foto, conta o tema e a gente cria um bonequinho só seu, montado num quadro para pendurar ou deixar na estante.</p>
+        <ul class="checks">
+          <li>Aniversário, Natal, Dia dos Pais e das Mães, formatura, casal</li>
+          <li>Com roupa, profissão, hobby, time ou até o pet</li>
+          <li>Você aprova o modelo antes da impressão</li>
         </ul>
-        <a class="btn btn-ink" href="#contato">Criar minha miniatura <span class="arrow">→</span></a>
+        <a class="btn btn-sun" href="#contato">Quero o meu</a>
       </div>
     </div>
   </section>
 
-  <section class="section" id="processo">
+  <section class="section" id="como-funciona">
     <div class="wrap">
-      <div class="sec-head">
-        <div><span class="kicker">Como funciona</span><h2 style="margin-top:16px">Do pedido à sua porta em quatro etapas</h2></div>
-        <p class="muted">Processo simples e transparente. Você acompanha cada fase da produção.</p>
+      <div class="head">
+        <span class="tag" style="align-self:flex-start;background:var(--lilac)">Como funciona</span>
+        <h2>Simples assim</h2>
       </div>
-      <div class="process">
-        <div class="step"><span class="num">Etapa 1</span><div class="bar"><i style="--w:25%"></i></div><h3>Pedido</h3><p>Escolha uma peça a pronta entrega ou conte sua ideia pelo Instagram ou WhatsApp.</p></div>
-        <div class="step"><span class="num">Etapa 2</span><div class="bar"><i style="--w:50%"></i></div><h3>Orçamento</h3><p>Confirmamos disponibilidade, ou definimos tamanho, cor, valor e prazo da encomenda.</p></div>
-        <div class="step"><span class="num">Etapa 3</span><div class="bar"><i style="--w:75%"></i></div><h3>Produção</h3><p>Peças de estoque já estão prontas. Encomendas são impressas camada por camada e recebem o acabamento de cada modelo, com pintura à mão quando a peça pede.</p></div>
-        <div class="step"><span class="num">Etapa 4</span><div class="bar"><i style="--w:100%"></i></div><h3>Entrega</h3><p>Embalagem protegida e envio para qualquer cidade do Brasil.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" style="padding-top:0">
-    <div class="wrap">
-      <div class="diffs">
-        <div class="diff"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h16M4 12h16M4 17h16"/></svg></span><h3>Alta precisão</h3><p>Impressoras de última geração com camadas de até 0,12 mm, para detalhes nítidos.</p></div>
-        <div class="diff"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 4l6 6-9 9H5v-6l9-9Z"/><path d="M12 6l6 6"/></svg></span><h3>Acabamento caprichado</h3><p>Cada peça é revisada e finalizada. Nas coleções coloridas, a pintura é feita à mão.</p></div>
-        <div class="diff"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></span><h3>Pronta entrega e encomenda</h3><p>Peças em estoque para envio rápido e produção sob medida quando você quer personalizar.</p></div>
-        <div class="diff"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7l9-4 9 4-9 4-9-4Z"/><path d="M3 7v10l9 4 9-4V7M12 11v10"/></svg></span><h3>Embalagem segura</h3><p>Proteção reforçada para a peça chegar perfeita.</p></div>
-        <div class="diff"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-4.5-7-11a7 7 0 0 1 14 0c0 6.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg></span><h3>Envio nacional</h3><p>Entregamos em todo o Brasil pelos Correios e transportadoras.</p></div>
-        <div class="diff"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5h16v11H8l-4 4V5Z"/></svg></span><h3>Atendimento direto</h3><p>Você fala com quem produz, do orçamento à entrega.</p></div>
-      </div>
+      <ol class="steps">
+        <li class="step"><span class="n">1</span><h3>Chama a gente</h3><p>Pelo WhatsApp ou Instagram. Escolhe uma peça pronta ou conta sua ideia.</p></li>
+        <li class="step"><span class="n">2</span><h3>Combina</h3><p>Confirmamos o que tem em estoque, ou fechamos cor, tamanho, valor e prazo.</p></li>
+        <li class="step"><span class="n">3</span><h3>Camada por camada</h3><p>A peça é impressa e finalizada com capricho. Quando pede, ganha pintura à mão.</p></li>
+        <li class="step"><span class="n">4</span><h3>Chega aí</h3><p>Embalada com carinho e enviada para qualquer canto do Brasil.</p></li>
+      </ol>
     </div>
   </section>
 
   <section class="section faq" id="duvidas" style="padding-top:0">
     <div class="wrap">
-      <div><span class="kicker">Dúvidas</span><h2 style="margin-top:16px">Perguntas frequentes</h2><p class="muted" style="margin-top:16px">Não encontrou sua resposta? Fale com a gente.</p></div>
+      <div class="head" style="margin:0">
+        <span class="tag" style="align-self:flex-start;background:var(--sun);color:var(--ink)">Dúvidas</span>
+        <h2>Perguntas que todo mundo faz</h2>
+        <p>Ficou alguma? Manda no WhatsApp.</p>
+      </div>
       <div class="faq-list">
-        <details open><summary>Vocês têm peças a pronta entrega?<span class="pm" aria-hidden="true">+</span></summary><p>Sim. Mantemos em estoque os modelos mais procurados de cada coleção, prontos para envio logo após a confirmação do pagamento. Chame no WhatsApp para ver o que está disponível.</p></details>
-        <details><summary>Qual o prazo das encomendas?<span class="pm" aria-hidden="true">+</span></summary><p>Depende do tamanho e do acabamento da peça. Informamos o prazo exato junto com o orçamento, antes de você confirmar o pedido.</p></details>
-        <details><summary>Posso escolher cores e tamanho?<span class="pm" aria-hidden="true">+</span></summary><p>Sim. Ajustamos tamanho, cores e detalhes como nomes e datas, conforme o modelo.</p></details>
-        <details><summary>Como funciona a miniatura personalizada?<span class="pm" aria-hidden="true">+</span></summary><p>Você envia uma ou mais fotos e conta o tema. Criamos o modelo, você aprova e só então imprimimos e pintamos.</p></details>
-        <details><summary>Vocês entregam fora de Minas Gerais?<span class="pm" aria-hidden="true">+</span></summary><p>Sim, enviamos para todo o Brasil. O frete é calculado no orçamento conforme o CEP.</p></details>
-        <details><summary>Quais as formas de pagamento?<span class="pm" aria-hidden="true">+</span></summary><p>Pix e cartão. Pela loja da Shopee você também pode pagar com as opções oferecidas pela plataforma.</p></details>
+        <details open><summary>Vocês têm peças a pronta entrega?</summary><p>Temos! Os favoritos de cada coleção ficam prontos para envio logo após o pagamento. Chama no WhatsApp para ver o que tem hoje.</p></details>
+        <details><summary>Qual o prazo das encomendas?</summary><p>Depende do tamanho e do acabamento. O prazo certinho vem junto com o orçamento, antes de você confirmar.</p></details>
+        <details><summary>Dá para escolher cor, tamanho e nome?</summary><p>Dá sim. Ajustamos cores, tamanho e detalhes como nomes e datas, conforme o modelo.</p></details>
+        <details><summary>Como funciona a miniatura personalizada?</summary><p>Você manda fotos e conta o tema. A gente cria o modelo, você aprova, e só então imprimimos e finalizamos.</p></details>
+        <details><summary>Entregam fora de Minas?</summary><p>Para todo o Brasil. O frete é calculado pelo CEP no orçamento.</p></details>
+        <details><summary>Como posso pagar?</summary><p>Pix ou cartão. Na Shopee, valem as formas de pagamento da plataforma.</p></details>
       </div>
     </div>
   </section>
 
-  <section class="cta" id="contato">
+  <section class="section cta" id="contato">
     <div class="wrap">
-      <div class="cta-box">
-        <div>
-          <span class="kicker">Contato</span>
-          <h2 style="margin-top:16px">Vamos dar forma à sua ideia?</h2>
-          <p class="sub">Pergunte o que temos a pronta entrega ou envie sua ideia e receba orçamento com valor e prazo.</p>
-        </div>
-        <div class="channels">
-          <a class="ch" href="https://wa.me/5531992593387" target="_blank" rel="noopener"><span><small>WhatsApp</small><b>(31) 99259-3387</b></span><span class="arrow">→</span></a>
-          <a class="ch" href="https://www.instagram.com/artnexo.3d/" target="_blank" rel="noopener"><span><small>Instagram</small><b>@artnexo.3d</b></span><span class="arrow">→</span></a>
-          <a class="ch" href="https://shopee.com.br/artnexo.3d" target="_blank" rel="noopener"><span><small>Loja online</small><b>ArtNexo 3D na Shopee</b></span><span class="arrow">→</span></a>
-        </div>
+      <div>
+        <h2>Bora dar forma à sua ideia?</h2>
+        <p class="sub">Pergunta o que tem pronto ou conta o que você imaginou. A gente responde com valor e prazo.</p>
+      </div>
+      <div class="chs">
+        <a class="ch" href="https://wa.me/5531992593387" target="_blank" rel="noopener"><span><small>WhatsApp</small><b>(31) 99259-3387</b></span><span class="go" aria-hidden="true">→</span></a>
+        <a class="ch" href="https://www.instagram.com/benditofilamento/" target="_blank" rel="noopener"><span><small>Instagram</small><b>@benditofilamento</b></span><span class="go" aria-hidden="true">→</span></a>
+        <a class="ch" href="https://shopee.com.br/benditofilamento" target="_blank" rel="noopener"><span><small>Loja online</small><b>Bendito na Shopee</b></span><span class="go" aria-hidden="true">→</span></a>
       </div>
     </div>
   </section>
@@ -411,8 +378,12 @@ footer a:hover{color:var(--ink)}
 
 <footer>
   <div class="wrap">
-    <div style="display:flex;flex-direction:column;gap:10px"><span class="foot-brand"><svg class="logo-icon" viewBox="0 0 100 100" aria-hidden="true"><path fill="currentColor" d="M93.30,25.00 L58.12,4.69 L58.12,47.45 L68.62,57.95 L68.62,22.88 L82.80,31.07 L82.80,68.93 L50.00,87.87 L49.28,87.46 L44.03,96.55 L50.00,100.00 L93.30,75.00 Z M6.70,25.00 L6.70,75.00 L41.88,95.31 L41.88,49.31 L59.66,67.09 L67.09,59.66 L31.38,23.95 L31.38,77.12 L17.20,68.93 L17.20,31.07 L30.70,23.27 L50.00,12.13 L50.72,12.54 L55.97,3.45 L50.00,0.00 Z"/></svg><svg class="logo-word" viewBox="0 -1.2 252.7 30.6" aria-hidden="true"><path fill="currentColor" d="M19.96 23.84H9.48L7.8 28.8H0.64L10.8 0.72H18.72L28.88 28.8H21.64ZM18.2 18.56 14.72 8.28 11.28 18.56ZM46.28 28.8 40.44 18.2H38.8V28.8H31.96V0.72H43.44Q46.76 0.72 49.1 1.88Q51.44 3.04 52.6 5.06Q53.76 7.08 53.76 9.56Q53.76 12.36 52.18 14.56Q50.6 16.76 47.52 17.68L54.0 28.8ZM38.8 13.36H43.04Q44.92 13.36 45.86 12.44Q46.8 11.52 46.8 9.84Q46.8 8.24 45.86 7.32Q44.92 6.4 43.04 6.4H38.8ZM78.24 0.72V6.2H70.8V28.8H63.96V6.2H56.52V0.72ZM106.8 28.8H99.96L88.52 11.48V28.8H81.68V0.72H88.52L99.96 18.12V0.72H106.8ZM118.6 6.2V11.88H127.76V17.16H118.6V23.32H128.96V28.8H111.76V0.72H128.96V6.2ZM150.6 28.8 144.88 20.2 139.84 28.8H132.08L141.08 14.52L131.88 0.72H139.84L145.48 9.2L150.44 0.72H158.2L149.28 14.88L158.56 28.8ZM160.84 14.68Q160.84 10.56 162.78 7.28Q164.72 4.0 168.02 2.16Q171.32 0.32 175.28 0.32Q179.24 0.32 182.54 2.16Q185.84 4.0 187.74 7.28Q189.64 10.56 189.64 14.68Q189.64 18.8 187.72 22.1Q185.8 25.4 182.52 27.24Q179.24 29.08 175.28 29.08Q171.32 29.08 168.02 27.24Q164.72 25.4 162.78 22.1Q160.84 18.8 160.84 14.68ZM182.68 14.68Q182.68 10.96 180.66 8.74Q178.64 6.52 175.28 6.52Q171.88 6.52 169.86 8.72Q167.84 10.92 167.84 14.68Q167.84 18.4 169.86 20.62Q171.88 22.84 175.28 22.84Q178.64 22.84 180.66 20.6Q182.68 18.36 182.68 14.68ZM211.44 -1.08Q214.44 -1.08 216.58 -0.04Q218.72 1.0 219.82 2.8Q220.92 4.6 220.92 6.84Q220.92 9.48 219.6 11.14Q218.28 12.8 216.52 13.4V13.56Q218.8 14.32 220.12 16.08Q221.44 17.84 221.44 20.6Q221.44 23.08 220.3 24.98Q219.16 26.88 216.98 27.96Q214.8 29.04 211.8 29.04Q207.0 29.04 204.14 26.68Q201.28 24.32 201.12 19.56H207.76Q207.8 21.32 208.76 22.34Q209.72 23.36 211.56 23.36Q213.12 23.36 213.98 22.46Q214.84 21.56 214.84 20.08Q214.84 18.16 213.62 17.3Q212.4 16.44 209.72 16.44H208.44V10.88H209.72Q211.76 10.88 213.02 10.18Q214.28 9.48 214.28 7.68Q214.28 6.24 213.48 5.44Q212.68 4.64 211.28 4.64Q209.76 4.64 209.02 5.56Q208.28 6.48 208.16 7.84H201.48Q201.64 3.56 204.28 1.24Q206.92 -1.08 211.44 -1.08ZM251.36 14.76Q251.36 18.88 249.54 22.08Q247.72 25.28 244.38 27.04Q241.04 28.8 236.64 28.8H226.12V0.72H236.64Q241.08 0.72 244.4 2.48Q247.72 4.24 249.54 7.42Q251.36 10.6 251.36 14.76ZM244.4 14.76Q244.4 10.88 242.24 8.72Q240.08 6.56 236.2 6.56H232.96V22.88H236.2Q240.08 22.88 242.24 20.76Q244.4 18.64 244.4 14.76Z"/></svg></span><span>© 2026 ArtNexo 3D · Ideias que ganham forma · WhatsApp (31) 99259-3387</span></div>
-    <nav aria-label="Rodapé"><a href="#produtos">Produtos</a><a href="#personalizados">Personalizados</a><a href="#duvidas">Dúvidas</a><a href="https://www.instagram.com/artnexo.3d/" target="_blank" rel="noopener">Instagram</a></nav>
+    <a class="brand" href="#inicio" aria-label="Bendito Filamento, início">
+      <svg class="mascot" viewBox="0 0 100 110" style="--flange:var(--cream)" aria-hidden="true"><use href="#bendito"/></svg>
+      <span><b>Bendito</b><small>filamento</small></span>
+    </a>
+    <span>© 2026 Bendito Filamento · benditofilamento.com.br · WhatsApp (31) 99259-3387</span>
+    <nav aria-label="Rodapé"><a href="#colecoes">Coleções</a><a href="#personalizados">Personalizados</a><a href="#duvidas">Dúvidas</a></nav>
   </div>
 </footer>
 </body>
